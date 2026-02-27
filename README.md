@@ -104,3 +104,28 @@ Checklist:
 - [x] Types de messages listés.
 - [ ] Clés PKI générées localement.
 - [ ] Commit + tag `sprint/0`.
+
+## Sprint 1 - Node Discovery and Routing
+
+Implemented:
+- UDP multicast discovery on `239.255.42.99:6000` (`HELLO`);
+- peer table with `node_id`, `ip`, `tcp_port`, `last_seen`, `shared_files`, `reputation`;
+- stale peer eviction after timeout;
+- TCP server (default `7777`) using TLV framing;
+- keepalive `PING/PONG` every 15s on established TCP connections.
+
+Run one node:
+
+```powershell
+python run_node.py --tcp-port 7777 --hello-interval 30 --stale-timeout 90
+```
+
+Sprint 1 local demo (3 nodes):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\demo_sprint1.ps1
+```
+
+Expected result:
+- 3 nodes discover each other in < 60s;
+- peer table is printed every 10s in each console.
