@@ -113,11 +113,12 @@ Implemented:
 - stale peer eviction after timeout;
 - TCP server (default `7777`) using TLV framing;
 - keepalive `PING/PONG` every 15s on established TCP connections.
+- Sprint 1 runtime language: **Node.js** (built-in modules only).
 
 Run one node:
 
 ```powershell
-python run_node.py --tcp-port 7777 --hello-interval 30 --stale-timeout 90
+node run_node.js --tcp-port 7777 --hello-interval 30 --stale-timeout 90
 ```
 
 Sprint 1 local demo (3 nodes):
